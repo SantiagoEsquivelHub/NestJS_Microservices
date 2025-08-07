@@ -1,0 +1,3 @@
+[submodule "02-Products-App/products-ms"]
+	path = 02-Products-App/products-ms
+	url = https://github.com/SantiagoEsquivelHub/products-microservice.git
