@@ -1,3 +1,6 @@
 [submodule "02-Products-App/products-ms"]
 	path = 02-Products-App/products-ms
 	url = https://github.com/SantiagoEsquivelHub/products-microservice.git
+[submodule "02-Products-App/client-gateway"]
+	path = 02-Products-App/client-gateway
+	url = https://github.com/SantiagoEsquivelHub/client-gateway.git
