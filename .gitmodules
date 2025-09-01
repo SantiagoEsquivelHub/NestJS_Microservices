@@ -4,3 +4,6 @@
 [submodule "02-Products-App/client-gateway"]
 	path = 02-Products-App/client-gateway
 	url = https://github.com/SantiagoEsquivelHub/client-gateway.git
+[submodule "02-Products-App/orders-ms"]
+	path = 02-Products-App/orders-ms
+	url = https://github.com/SantiagoEsquivelHub/orders-microservice.git
