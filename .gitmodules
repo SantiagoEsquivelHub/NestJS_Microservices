@@ -7,3 +7,6 @@
 [submodule "02-Products-App/orders-ms"]
 	path = 02-Products-App/orders-ms
 	url = https://github.com/SantiagoEsquivelHub/orders-microservice.git
+[submodule "02-Products-App/payments-ms"]
+	path = 02-Products-App/payments-ms
+	url = https://github.com/SantiagoEsquivelHub/payments-microservice.git
