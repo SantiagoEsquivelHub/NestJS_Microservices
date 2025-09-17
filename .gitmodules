@@ -10,3 +10,6 @@
 [submodule "02-Products-App/payments-ms"]
 	path = 02-Products-App/payments-ms
 	url = https://github.com/SantiagoEsquivelHub/payments-microservice.git
+[submodule "02-Products-App/auth-ms"]
+	path = 02-Products-App/auth-ms
+	url = https://github.com/SantiagoEsquivelHub/auth-microservice
