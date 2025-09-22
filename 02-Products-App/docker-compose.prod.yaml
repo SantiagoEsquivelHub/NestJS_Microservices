@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+
+  nats-server:
+    image: nats:latest
+
+  # client-gateway:
+  #   build: 
+  #     context: ./client-gateway
+  #     dockerfile: Dockerfile.prod
+  #   image: southamerica-east1-docker.pkg.dev/shop-microservices-472915/image-registry/client-gateway
+  #   ports: 
+  #   - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
+  #   environment:
+  #   - PORT=${CLIENT_GATEWAY_PORT}
+  #   - NATS_SERVERS=nats://nats-server:4222
+
+  auth-ms:
+    build: 
+      context: ./auth-ms
+      dockerfile: Dockerfile.prod
+    image: southamerica-east1-docker.pkg.dev/shop-microservices-472915/image-registry/auth-ms
+    environment:
+    - PORT=3000
+    - NATS_SERVERS=nats://nats-server:4222
+    - DATABASE_URL=${AUTH_DATABASE_URL}
+    - JWT_SECRET=${JWT_SECRET}
+
+  products-ms:
+    build: 
+      context: ./products-ms
+      dockerfile: Dockerfile.prod
+    image: southamerica-east1-docker.pkg.dev/shop-microservices-472915/image-registry/products-ms
+    environment:
+    - PORT=3000
+    - NATS_SERVERS=nats://nats-server:4222
+    - DATABASE_URL=file:./dev.db
+
+  # orders-ms:
+  #   build: 
+  #     context: ./orders-ms
+  #     dockerfile: Dockerfile.prod
+  #     args: 
+  #       - ORDERS_DATABASE_URL=${ORDERS_DATABASE_URL}
+  #   image: southamerica-east1-docker.pkg.dev/shop-microservices-472915/image-registry/orders-ms
+  #   environment:
+  #     - PORT=3002
+  #     - NATS_SERVERS=nats://nats-server:4222
+  #     - DATABASE_URL=${ORDERS_DATABASE_URL}
+
+  # payments-ms:
+  #   build: 
+  #     context: ./payments-ms
+  #     dockerfile: Dockerfile.prod
+  #   image: southamerica-east1-docker.pkg.dev/shop-microservices-472915/image-registry/payments-ms
+  #   ports:
+  #    - ${PAYMENTS_MS_PORT}:${PAYMENTS_MS_PORT}
+  #   environment:
+  #   - PORT=${PAYMENTS_MS_PORT}
+  #   - NATS_SERVERS=nats://nats-server:4222
+  #   - STRIPE_SECRET=${STRIPE_SECRET}
+  #   - STRIPE_ENDPOINT_SECRET=${STRIPE_ENDPOINT_SECRET}
+  #   - STRIPE_SUCCESS_URL=${STRIPE_SUCCESS_URL}
+  #   - STRIPE_CANCEL_URL=${STRIPE_CANCEL_URL}
